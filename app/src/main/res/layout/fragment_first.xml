@@ -87,4 +87,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_username"
         app:layout_constraintVertical_bias="0.201" />
+
+    <CheckBox
+        android:id="@+id/cb_pass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="remember password"
+        app:layout_constraintEnd_toEndOf="@+id/ed_password"
+        app:layout_constraintTop_toBottomOf="@+id/ed_password" />
 </androidx.constraintlayout.widget.ConstraintLayout>
