@@ -11,14 +11,18 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import android.view.Menu
 import android.view.MenuItem
 import com.vangood.atm.databinding.ActivityMainBinding
+import okhttp3.*
+import okio.ByteString
 import java.net.URL
+import java.util.concurrent.TimeUnit
 import kotlin.concurrent.thread
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = ActivityMainBinding::class.java.simpleName
+    private val TAG = MainActivity::class.java.simpleName
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: ActivityMainBinding
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,15 +40,57 @@ class MainActivity : AppCompatActivity() {
             Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show()
         }
+        /*
         //networking
-        
+        webTesting()
+        //Web socket
+        val client = OkHttpClient.Builder()
+            .readTimeout(3,TimeUnit.SECONDS)//over 3 sec talk don not link
+            .build()
+        val request = Request.Builder()
+            .url("wss://lott-dev.lottcube.asia/ws/chat/chat:app_test?nickname=Hank")
+            .build()
+        websocket = client.newWebSocket(request,object :WebSocketListener(){
+            override fun onClosed(webSocket: WebSocket, code: Int, reason: String) {
+                super.onClosed(webSocket, code, reason)
+                Log.d(TAG, "onClosed: ")
+            }
+
+            override fun onClosing(webSocket: WebSocket, code: Int, reason: String) {
+                super.onClosing(webSocket, code, reason)
+                Log.d(TAG, "onClosing: ")
+            }
+
+            override fun onFailure(webSocket: WebSocket, t: Throwable, response: Response?) {
+                super.onFailure(webSocket, t, response)
+                Log.d(TAG, "onFailure: ")
+            }
+
+            override fun onMessage(webSocket: WebSocket, text: String) {    //have word text
+                super.onMessage(webSocket, text)
+                Log.d(TAG, "onMessage: $text")
+            }
+
+            override fun onMessage(webSocket: WebSocket, bytes: ByteString) {   //no word
+                super.onMessage(webSocket, bytes)
+                Log.d(TAG, "onMessage: ${bytes.hex()}")
+            }
+
+            override fun onOpen(webSocket: WebSocket, response: Response) {
+                super.onOpen(webSocket, response)
+                Log.d(TAG, "onOpen: ")
+                //webSocket.send("tets123456789") not send
+            }
+        })//can link
+*/
+
+    }
+    private  fun webTesting(){
         thread {
             val data = URL("https://www.ibm.com")
                 .readText()
             Log.d(TAG, "data: $data ")
         }
-
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
