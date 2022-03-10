@@ -10,8 +10,8 @@ android {
         applicationId "com.vangood.atm"
         minSdk 23
         targetSdk 32
-        versionCode 1
-        versionName "1.0"
+        versionCode 1//開發人員看的 版本 第幾版
+        versionName "1.0"//外面的人看的 下載下來看到的版本
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
