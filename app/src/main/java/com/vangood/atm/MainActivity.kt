@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
                 .setAction("Action", null).show()
         }
         //networking
+        
         thread {
             val data = URL("https://www.ibm.com")
                 .readText()
